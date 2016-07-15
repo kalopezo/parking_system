@@ -11,9 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714003437) do
+ActiveRecord::Schema.define(version: 20160715000152) do
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "location_id"
+    t.float    "location_latitude"
+    t.float    "location_longitude"
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "park_records", force: :cascade do |t|
+    t.integer  "park_record_id"
+    t.datetime "date_details"
+    t.string   "comments"
+    t.integer  "vehicle_id"
+    t.integer  "slot_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "park_records", ["slot_id"], name: "index_park_records_on_slot_id"
+  add_index "park_records", ["vehicle_id"], name: "index_park_records_on_vehicle_id"
+
+  create_table "slots", force: :cascade do |t|
+    t.integer  "slot_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "occuped"
+  end
+
+  add_index "slots", ["location_id"], name: "index_slots_on_location_id"
 
   create_table "users", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password"
@@ -25,9 +58,10 @@ ActiveRecord::Schema.define(version: 20160714003437) do
   end
 
   create_table "vehicles", force: :cascade do |t|
+    t.integer  "vehicle_id"
     t.string   "model"
+    t.integer  "year"
     t.string   "vin"
-    t.string   "year"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

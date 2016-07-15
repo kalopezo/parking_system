@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  user_id: 1
   first_name: MyString
   last_name: MyString
   password: MyString
   email: MyString
-  birthday: 2016-07-13
+  birthday: 2016-07-14
   is_admin: false
 
 two:
+  user_id: 1
   first_name: MyString
   last_name: MyString
   password: MyString
   email: MyString
-  birthday: 2016-07-13
+  birthday: 2016-07-14
   is_admin: false
