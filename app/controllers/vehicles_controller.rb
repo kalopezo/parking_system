@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
     @vehicle.user_id = current_user.id
     if @vehicle.save
       flash[:succes] = 'Vehicle registered sucessfully'
-      redirect_to_user_vehicles_path(current_user)
+      redirect_to user_vehicles_path(current_user)
     else
       flash[:error] = @vehicle.errors.full:messages.join(',')
       render 'new'
@@ -17,10 +17,12 @@ class VehiclesController < ApplicationController
   end
 
   def index
-
+    @vehicles = Vehicle.all
+    @user = current_user
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:model, )
+    params.require(:vehicle).permit(:user_id, :model, :year, :vin, :id)
   end
+  private :vehicle_params
 end

@@ -1,4 +1,4 @@
 class ParkRecord < ActiveRecord::Base
-  belongs_to :vehicle_id
-  belongs_to :slot_id
+  belongs_to :vehicle
+  belongs_to :slot
 end
