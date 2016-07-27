@@ -4,4 +4,5 @@ class Vehicle < ActiveRecord::Base
   has_many :park_records
   has_many :slots, through: :park_records
   # Validaciones
+  validates
 end
