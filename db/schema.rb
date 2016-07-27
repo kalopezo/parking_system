@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726234541) do
+ActiveRecord::Schema.define(version: 20160727010615) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "location_id"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160726234541) do
     t.integer  "slot_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.date     "entry_date"
+    t.date     "departure_date"
   end
 
   add_index "park_records", ["slot_id"], name: "index_park_records_on_slot_id"
